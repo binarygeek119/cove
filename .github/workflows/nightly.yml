@@ -257,6 +257,12 @@ jobs:
             suffix: ""
           - dockerfile: docker/Dockerfile.app
             suffix: "-app"
+          - dockerfile: docker/Dockerfile.app.intel
+            suffix: "-app-intel"
+          - dockerfile: docker/Dockerfile.app.amd
+            suffix: "-app-amd"
+          - dockerfile: docker/Dockerfile.app.nvidia
+            suffix: "-app-nvidia"
 
     steps:
       - uses: actions/checkout@v7
