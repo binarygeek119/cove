@@ -342,6 +342,15 @@ jobs:
           - dockerfile: docker/Dockerfile.app
             suffix: '-app'
             description: 'App only (requires external PostgreSQL)'
+          - dockerfile: docker/Dockerfile.app.intel
+            suffix: '-app-intel'
+            description: 'App only Intel GPU (Intel media drivers baked in)'
+          - dockerfile: docker/Dockerfile.app.amd
+            suffix: '-app-amd'
+            description: 'App only AMD GPU (Mesa drivers baked in)'
+          - dockerfile: docker/Dockerfile.app.nvidia
+            suffix: '-app-nvidia'
+            description: 'App only NVIDIA GPU (defaults to NVENC)'
 
     steps:
       - uses: actions/checkout@v7

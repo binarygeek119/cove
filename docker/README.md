@@ -131,14 +131,26 @@ If the frontend shows a "Database Update Required" screen, simply restart the co
 
 The all-in-one container enables `CREATE EXTENSION vector` before Cove starts and exits if pgvector is missing from the image.
 
+## GPU images
+
+Pre-built app images (published from this fork on every stable upstream Cove release):
+
+- `ghcr.io/binarygeek119/cove-app-intel:latest` (defaults to QSV)
+- `ghcr.io/binarygeek119/cove-app-amd:latest` (defaults to VAAPI)
+- `ghcr.io/binarygeek119/cove-app-nvidia:latest` (defaults to NVENC)
+
+Each is also tagged with the upstream Cove version, e.g. `ghcr.io/binarygeek119/cove-app-intel:1.7.0`.
+
 ## Building locally
 
 From the repository root:
 
 ```bash
-# All-in-one
-docker build --file docker/Dockerfile --tag cove:local .
-
 # App-only
 docker build --file docker/Dockerfile.app --tag yourcove:local .
+
+# GPU variants (drivers baked in where applicable; default HW accel set per image)
+docker build --file docker/Dockerfile.app.intel --tag yourcove:intel .
+docker build --file docker/Dockerfile.app.amd --tag yourcove:amd .
+docker build --file docker/Dockerfile.app.nvidia --tag yourcove:nvidia .
 ```
