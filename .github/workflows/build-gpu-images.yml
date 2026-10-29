@@ -91,7 +91,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: upstream
-          file: docker/Dockerfile.app.${{ matrix.gpu }}
+          file: ${{ github.workspace }}/upstream/docker/Dockerfile.app.${{ matrix.gpu }}
           push: true
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/cove-app-${{ matrix.gpu }}:${{ needs.resolve-version.outputs.version }}
