@@ -96,6 +96,6 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/cove-app-${{ matrix.gpu }}:${{ needs.resolve-version.outputs.version }}
             ${{ env.REGISTRY }}/${{ github.repository_owner }}/cove-app-${{ matrix.gpu }}:latest
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           build-args: |
             VERSION=${{ needs.resolve-version.outputs.version }}
